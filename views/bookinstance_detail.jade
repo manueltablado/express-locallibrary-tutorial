@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    h1 Title: #{bookinstance.book.title}
+
+    if bookinstance.status=='Available'
+        h2.text-success #{bookinstance.status}
+      else if bookinstance.status=='Maintenance'
+        h2.text-danger #{bookinstance.status}
+      else
+        h2.text-warning #{bookinstance.status}
+
+    div(style='margin-left:20px;margin-top:20px')
+
+    p #[strong Id:] #{bookinstance._id}
+    p #[strong Book:] 
+        a(href=bookinstance.book.url) #{bookinstance.book.title}
+    p #[strong Imprint:] #{bookinstance.imprint}
+    if bookinstance.status!='Available'
+        p #[strong Due back:] #{bookinstance.due_back_formatted}

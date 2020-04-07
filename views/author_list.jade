@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+
+  ul
+    each auth in list_author
+      li 
+        a(href=auth.url) #{auth.family_name}, #{auth.first_name} :
+        span  ( #{auth.lifespan_formated} )
+          
+    else
+        li There are no authors.
